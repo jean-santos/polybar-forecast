@@ -18,7 +18,7 @@ impl<'a> OpenWeatherMap<'a> {
     pub fn get_info(&self, query: QueryType) -> Result<WeatherInfo, Error> {
         let params = QueryParams {
             app_id: &self.config.api_key,
-            city_id: &self.config.city_id,
+            id: &self.config.city_id,
             units: Unit::Celcius.to_api(),
             cnt: 1,
         };
@@ -60,7 +60,7 @@ struct QueryParams<'a> {
     #[serde(rename = "APPID")]
     app_id: &'a str,
     #[serde(rename = "id")]
-    city_id: &'a str,
+    id: &'a str,
     #[serde(rename = "units")]
     units: &'a str,
     cnt: i32,
